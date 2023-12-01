@@ -15,6 +15,7 @@ interface IProductManager {
     function updateGrowUpProduct(string calldata id, string calldata url) external;
     function getGrowUpProduct(string calldata id) external view returns(SupplyChainLib.GrowUpDetail[] memory);
     function update_status_product(string calldata id, SupplyChainLib.ProductStatus status) external;
+    function get_price_product_by_id(string calldata product_id, string calldata product_type) external view returns(uint);
 }
 
 contract ProductManager is IProductManager{
@@ -79,5 +80,8 @@ contract ProductManager is IProductManager{
     }
     function get_list_type_product(string calldata product_id) public view returns(string[] memory){
         return iProduct.get_list_type_product(product_id);
+    }
+    function get_price_product_by_id(string calldata product_id, string calldata product_type) public view returns(uint){
+        return iProduct.get_price_product_by_id(product_id, product_type);
     }
 }
