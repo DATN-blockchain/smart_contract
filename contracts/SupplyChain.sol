@@ -176,8 +176,9 @@ contract SupplyChain {
             current_product.status == SupplyChainLib.ProductStatus.Puhlish,
             "product is not puhlish"
         );
-        require(!iActor.check_actor_is_exist(user_id), "User not exsit");
-        uint price =  iProduct.burn(product_id, quantity, id_type);
+        require(iActor.check_actor_is_exist(user_id), "User not exsit");
+        uint price = iProduct.get_price_product_by_id(product_id, id_type);
+        iProduct.burn(product_id, quantity, id_type);
         iActor.withdraw_balance(user_id, (quantity*price));
         iActor.deposited(current_product.owner_id, (quantity*price));
         iTransaction.create(

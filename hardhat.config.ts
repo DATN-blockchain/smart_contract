@@ -9,6 +9,18 @@ const config: HardhatUserConfig = {
       chainId: 421613,
       gasPrice: 5000000000,
       accounts: ['2bd81d7cace245abc1a7e981075332251823b56a136c0154187cd8a0746ed84a'] 
+    },
+    stylus: {
+      url: "https://stylus-testnet.arbitrum.io/rpc", //3s cho 1 transaction
+      chainId: 23011913,
+      gasPrice: 5000000000,
+      accounts: ['2bd81d7cace245abc1a7e981075332251823b56a136c0154187cd8a0746ed84a'] 
+    },
+    sepolia: {
+      url: "https://sepolia-rollup.arbitrum.io/rpc", //3s cho 1 transaction
+      chainId: 421614,
+      gasPrice: 5000000000,
+      accounts: ['2bd81d7cace245abc1a7e981075332251823b56a136c0154187cd8a0746ed84a'] 
     }
   },
   solidity: {

@@ -13,6 +13,7 @@ interface IProduct {
     function create_price_detail_of_type(string calldata product_id, string[] calldata id_type, SupplyChainLib.CountDetail[] calldata price_quantity) external;
     function get_price_detail_of_product(string calldata product_id, string calldata id_type) external view returns(SupplyChainLib.CountDetail memory);
     function get_list_type_product(string calldata product_id) external view returns(string[] memory);
+    function get_price_product_by_id(string calldata product_id, string calldata product_type) external view returns(uint);
 }
 
 contract Product is IProduct{
@@ -94,6 +95,16 @@ contract Product is IProduct{
             return count_detail[id][id_type].price;
         }
         return products[id].price;
+    }
+
+    function get_price_product_by_id(string calldata product_id, string calldata product_type) public view returns(uint){
+        require(bytes(products[product_id].product_id).length>0, "error product not found");
+        if (bytes(product_type).length>0){
+            return count_detail[product_id][product_type].price;
+        }
+        else{
+            return products[product_id].price;
+        }
     }
 
 }
